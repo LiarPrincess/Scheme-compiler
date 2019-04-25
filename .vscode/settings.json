@@ -1,0 +1,5 @@
+{
+  "haskelly.buttons.ghci": false,
+  "haskelly.buttons.quickcheck": false,
+  "haskelly.buttons.runFile": false
+}
