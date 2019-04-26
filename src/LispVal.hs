@@ -1,13 +1,14 @@
 module LispVal (
-  LispVal(..)
+  LispVal(..),
+  unwordsList
 ) where
 
 data LispVal = Atom String
-             | List [LispVal]
-             | DottedList [LispVal] LispVal
-             | Number Integer
-             | String String
-             | Bool Bool
+            | List [LispVal]
+            | DottedList [LispVal] LispVal
+            | Number Integer
+            | String String
+            | Bool Bool
 
 instance Show LispVal where
   -- show :: LispVal -> String

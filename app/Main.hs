@@ -1,12 +1,14 @@
 module Main where
 
-import Lib
+import Control.Monad
 import System.Environment
+import Lib
 
 run :: String -> IO ()
 run input = do
   putStrLn input
-  putStrLn $ (show . eval . readExpr) $ input
+  evaled <- return $ liftM show $ readExpr input >>= eval
+  putStrLn $ extractValue $ trapError evaled
   putStrLn ""
 
 main :: IO ()

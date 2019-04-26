@@ -1,9 +1,15 @@
 module Lib (
   LispVal(..),
+  LispError(..),
   readExpr,
-  eval
+  eval,
+  throwError,
+  catchError,
+  trapError,
+  extractValue
 ) where
 
 import LispVal
+import LispError
 import Parser
 import Eval
