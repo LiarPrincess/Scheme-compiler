@@ -19,6 +19,7 @@ module Types (
   runIOThrows
 ) where
 
+import System.IO
 import Data.IORef
 import Control.Monad
 import Control.Monad.Except
@@ -42,6 +43,8 @@ data LispVal = Atom String
               body :: [LispVal],
               closure :: Env
             }
+            | IOFunc ([LispVal] -> IOThrowsError LispVal)
+            | Port Handle
 
 instance Show LispVal where
   -- show :: LispVal -> String
@@ -60,6 +63,8 @@ instance Show LispVal where
       Nothing -> ""
       Just arg -> " . " ++ arg) ++
     ") ...)"
+  show (Port _)   = "<IO port>"
+  show (IOFunc _) = "<IO primitive>"
 
 unwordsList :: [LispVal] -> String
 unwordsList = unwords . map show
