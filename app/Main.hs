@@ -28,12 +28,12 @@ until_ pred prompt action = do
     else action result >> until_ pred prompt action
 
 runRepl :: IO ()
-runRepl = nullEnv >>= until_ (== "quit") (readPrompt "Lisp>>> ") . evalAndPrint
+runRepl = primitiveEnv >>= until_ (== "quit") (readPrompt "Lisp>>> ") . evalAndPrint
 
 runOne :: String -> IO ()
 runOne input = do
   putStrLn input
-  env <- nullEnv
+  env <- primitiveEnv
   evalAndPrint env input
   putStrLn ""
 
@@ -42,6 +42,7 @@ main = do
   args <- getArgs
   case length args of
     0 -> runRepl
+    -- 1 -> runRepl
     1 -> do
       runOne "(a test)"
       runOne "(a (nested) test)"

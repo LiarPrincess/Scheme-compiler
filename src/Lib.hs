@@ -1,10 +1,11 @@
 module Lib (
   Env,
-  nullEnv,
   LispVal(..),
-  LispError(..),
+  nullEnv,
+  primitiveEnv,
   readExpr,
   eval,
+  LispError(..),
   ThrowsError,
   IOThrowsError,
   -- throwError,
@@ -15,8 +16,6 @@ module Lib (
   runIOThrows,
 ) where
 
-import Env
-import LispVal
-import LispError
+import Types
 import Parser
 import Eval
