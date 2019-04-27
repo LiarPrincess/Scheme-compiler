@@ -3,6 +3,7 @@ module Parser (
 ) where
 
 import Control.Monad
+import Control.Monad.Except
 import Text.ParserCombinators.Parsec hiding (spaces)
 import LispVal
 import LispError

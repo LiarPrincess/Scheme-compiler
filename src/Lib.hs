@@ -1,14 +1,21 @@
 module Lib (
+  Env,
+  nullEnv,
   LispVal(..),
   LispError(..),
   readExpr,
   eval,
-  throwError,
-  catchError,
+  ThrowsError,
+  IOThrowsError,
+  -- throwError,
+  -- catchError,
   trapError,
-  extractValue
+  extractValue,
+  liftThrows,
+  runIOThrows,
 ) where
 
+import Env
 import LispVal
 import LispError
 import Parser
