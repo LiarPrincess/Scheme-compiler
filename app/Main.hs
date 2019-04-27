@@ -38,4 +38,4 @@ runOne args = do
 
 main :: IO ()
 main = do args <- getArgs
-          if null args then runRepl else runOne $ args
+  if null args then runRepl else runOne $ args
